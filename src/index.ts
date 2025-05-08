@@ -1,29 +1,29 @@
 {
   // Problem 1
-//   function formatString(input: string, toUpper?: boolean): string {
-//     if (toUpper === false) {
-//       return input.toLowerCase();
-//     } else {
-//       return input.toUpperCase();
-//     }
-//   }
+function formatString(input: string, toUpper?: boolean): string {
+    if (toUpper === false) {
+        return input.toLowerCase();
+    } else {
+        return input.toUpperCase();
+    }
+}
 
   //
 
   // Problem 2
 
-// function filterByRating(
-//     items: { title: string; rating: number }[]
-// ): { title: string; rating: number }[] 
-// {
-//     return items.filter(item=> item.rating >= 4)
-// }
+function filterByRating(
+    items: { title: string; rating: number }[]
+): { title: string; rating: number }[] 
+{
+    return items.filter(item=> item.rating >= 4)
+}
 
-//     const books= [
-//     { title: "Book A", rating: 4.5 },
-//     { title: "Book B", rating: 3.2 },
-//     { title: "Book C", rating: 5.0 }
-//     ];
+    const books= [
+    { title: "Book A", rating: 4.5 },
+    { title: "Book B", rating: 3.2 },
+    { title: "Book C", rating: 5.0 }
+    ];
 
     
 
@@ -31,9 +31,9 @@
 
 
     // Problem 3
-    // function concatenateArrays<T>(...arrays: T[][]): T[]{
-    //     return ([] as T[]).concat(...arrays)
-    // }
+    function concatenateArrays<T>(...arrays: T[][]): T[]{
+        return ([] as T[]).concat(...arrays)
+    }
     // 
 
     // Problem 4
@@ -64,7 +64,89 @@
         
         }
         const myCar = new Car('Toyota', 2020, 'Corolla')
-        console.log(myCar.getInfo())
-        console.log(myCar.getModel())
+        
     // 
+
+    // problem 5
+    function processValue(value: string | number): number{
+        if( typeof value === 'string'){
+            return value.length;
+        }else{
+            return value * 2;
+        }
+    }
+
+    // 
+
+    // prooblem 6
+    interface Product {
+        name: string;
+        price: number;
+    }
+    
+    function getMostExpensiveProduct(products: Product[]): Product | null{
+        if(products.length === 0){
+            return null;
+        }
+
+        let  highestPriceProduct = products[0];
+
+        for( let i =1; i < products.length; i++){
+            if( products[i].price > highestPriceProduct.price){
+                highestPriceProduct = products[i];
+            }
+                
+        }
+        return highestPriceProduct;
+
+    }
+    const products = [
+        { name: "Pen", price: 10 },
+        { name: "Notebook", price: 25 },
+        { name: "Bag", price: 50 }
+    ];
+
+    
+    //
+
+    // Problem 7
+    enum Day {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+    
+    function getDayType(day: Day): string{
+        if(day === Day.Saturday){
+            return 'Weekend'
+            
+        }else{
+            return 'Weekday'
+        }
+    }
+    // 
+
+    // Probem 8
+    async function squareAsync(n: number): Promise<number>{
+        if(n < 0 ){
+            console.error(
+                "Error : Negative Number  Not Allowed"
+            );   
+        }
+        return new Promise((resolve)=>{
+
+            setTimeout(()=>{
+                resolve (n  * n)
+            },1000)
+        })
+    }
+    squareAsync(5)
+    // .then(res=> console.log(res))
+    // .catch(err=> console.log(err))
+    // 
+
 }
